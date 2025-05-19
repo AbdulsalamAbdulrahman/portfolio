@@ -1,0 +1,74 @@
+/* styles.css - Custom styles for Abdulsalam Abdulrahman Portfolio */
+
+/* Use blue (#028cf8) as the primary accent color */
+:root {
+  --primary-blue: #028cf8;
+  --primary-blue-light: #e3f2fd;
+  --primary-blue-dark: #0366b8;
+}
+
+/* Custom button focus ring for accessibility */
+button:focus, .focus\:ring-2:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-blue);
+}
+
+/* Custom blue badge for tech stack */
+.badge-blue {
+  background: var(--primary-blue-light);
+  color: var(--primary-blue);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Custom blue text utility */
+.text-blue {
+  color: var(--primary-blue) !important;
+}
+
+/* Custom blue background utility */
+.bg-blue {
+  background: var(--primary-blue) !important;
+  color: #fff;
+}
+
+/* Custom blue hover for links */
+a.text-blue:hover, a.text-blue:focus {
+  color: var(--primary-blue-dark) !important;
+}
+
+/* Custom blue border utility */
+.border-blue {
+  border-color: var(--primary-blue) !important;
+}
+
+/* Custom blue focus ring for inputs */
+input:focus, textarea:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 1px var(--primary-blue);
+}
+
+/* Custom blue for dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-blue: #028cf8;
+    --primary-blue-light: #0a2540;
+    --primary-blue-dark: #0366b8;
+  }
+  .bg-blue {
+    background: var(--primary-blue-dark) !important;
+  }
+  .text-blue {
+    color: var(--primary-blue) !important;
+  }
+}
+
+/* Smooth transitions for color changes */
+body, .bg-blue, .text-blue, .badge-blue {
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
