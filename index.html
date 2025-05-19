@@ -1,248 +1,286 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdulsalam Abdulrahman | Portfolio</title>
-    <meta name="description" content="Professional portfolio of Abdulsalam Abdulrahman - Web, Mobile, API & CBT Developer">
-    <link rel="icon" type="image/jpeg" href="images/A_logo.png" >
-    <!-- Use Tailwind Play CDN with dark mode enabled -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-      }
-    </script>
-    <link rel="stylesheet" href="css/styles.css">
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdulsalam Abdulrahman | Portfolio</title>
+  <meta name="description" content="Professional portfolio of Abdulsalam Abdulrahman - Web, Mobile, API & CBT Developer">
+  <link rel="icon" type="image/jpeg" href="images/A_logo.png" >
+  <!-- Use Tailwind Play CDN with dark mode enabled -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+    darkMode: 'class',
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300" 
-      x-data="{darkMode: localStorage.getItem('darkMode') === 'true' || (localStorage.getItem('darkMode') === null && window.matchMedia('(prefers-color-scheme: dark)').matches)}" 
-      x-init="$watch('darkMode', val => {localStorage.setItem('darkMode', val); document.documentElement.classList.toggle('dark', val)})"
-      :class="{'dark': darkMode}">
+    x-data="{darkMode: localStorage.getItem('darkMode') === 'true' || (localStorage.getItem('darkMode') === null && window.matchMedia('(prefers-color-scheme: dark)').matches)}" 
+    x-init="$watch('darkMode', val => {localStorage.setItem('darkMode', val); document.documentElement.classList.toggle('dark', val)})"
+    :class="{'dark': darkMode}">
+  
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md" x-data="{open: false}">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 flex items-center gap-2">
+            <img src="images/A_logo.png" alt="Logo A" class="h-8 w-8 rounded-full object-cover" id="nav-logo-img">
+            <a href="#home" class="text-xl font-bold">Abdulsalam Abdulrahman</a>
+          </div>
+        </div>                <div class="hidden md:block">
+          <div class="ml-10 flex items-center space-x-4">                        <a href="#home" class="hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Home</a>
+            <a href="#web-apps" class="hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Web Apps</a>
+            <a href="#mobile-apps" class="hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Mobile Apps</a>
+            <a href="#apis" class="hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">APIs</a>
+            <a href="#cbt" class="hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">CBT Deployments</a>
+            <a href="#contact" class="hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Contact</a>
+            <button @click="darkMode = !darkMode; document.documentElement.classList.toggle('dark', darkMode)" class="bg-blue-200 dark:bg-blue-700 p-2 rounded-full focus:outline-none">
+              <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+              <svg x-show="darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="-mr-2 flex md:hidden">
+          <button @click="open = !open" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-blue-400 hover:text-blue-500 hover:bg-blue-100 dark:hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#028cf8]">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
     
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md" x-data="{open: false}">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center gap-2">
-                        <img src="images/A_logo.png" alt="Logo A" class="h-8 w-8 rounded-full object-cover" id="nav-logo-img">
-                        <a href="#home" class="text-xl font-bold">Abdulsalam Abdulrahman</a>
-                    </div>
-                </div>                <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-4">                        <a href="#home" class="hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Home</a>
-                        <a href="#web-apps" class="hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Web Apps</a>
-                        <a href="#mobile-apps" class="hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Mobile Apps</a>
-                        <a href="#apis" class="hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">APIs</a>
-                        <a href="#cbt" class="hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">CBT Deployments</a>
-                        <a href="#contact" class="hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Contact</a>
-                        <button @click="darkMode = !darkMode; document.documentElement.classList.toggle('dark', darkMode)" class="bg-blue-200 dark:bg-blue-700 p-2 rounded-full focus:outline-none">
-                            <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                            </svg>
-                            <svg x-show="darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button @click="open = !open" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-blue-400 hover:text-blue-500 hover:bg-blue-100 dark:hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#028cf8]">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <div x-show="open" class="md:hidden">            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">                <a href="#home" @click="open = false" class="block hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Home</a>
-                <a href="#web-apps" @click="open = false" class="block hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Web Apps</a>
-                <a href="#mobile-apps" @click="open = false" class="block hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Mobile Apps</a>
-                <a href="#apis" @click="open = false" class="block hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">APIs</a>
-                <a href="#cbt" @click="open = false" class="block hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">CBT Deployments</a>
-                <a href="#contact" @click="open = false" class="block hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Contact</a>
-                <button @click="darkMode = !darkMode; document.documentElement.classList.toggle('dark', darkMode)" class="mt-2 bg-blue-200 dark:bg-blue-700 p-2 rounded-full focus:outline-none">
-                    <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                    </svg>
-                    <svg x-show="darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </nav>
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-20">
-        <div class="max-w-5xl mx-auto text-center">
-            <div class="flex flex-col md:flex-row items-center justify-center md:space-x-12">
-                <div class="mb-10 md:mb-0">
-                    <div class="rounded-full overflow-hidden w-48 h-48 mx-auto border-4 border-[#028cf8] dark:border-[#028cf8] shadow-xl">
-                        <img src="images/profile-photo.jpg" alt="Abdulsalam Abdulrahman" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <div class="flex-1 text-left md:text-left">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
-                        <span class="block">Hello, I'm</span>
-                        <span class="block text-[#028cf8] dark:text-[#028cf8]">Abdulsalam Abdulrahman</span>
-                    </h1>
-                    <p class="mt-6 text-xl sm:text-2xl md:text-3xl leading-relaxed">
-                        Full Stack Developer specialized in Web, Mobile, API Development & CBT Deployment
-                    </p>
-                    <div class="mt-10 flex flex-wrap gap-5">
-                        <a href="#web-apps" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#028cf8] hover:bg-blue-700 md:text-lg">
-                            View My Work
-                        </a>
-                        <a href="#contact" class="px-8 py-3 border border-blue-300 dark:border-blue-700 text-base font-medium rounded-md bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900 md:text-lg text-[#028cf8] dark:text-[#028cf8]">
-                            Contact Me
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tech Stack -->
-    <section class="bg-blue-50 dark:bg-blue-900 py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-extrabold text-center mb-10">My Tech Stack</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
-                <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow-md">
-                    <h3 class="font-bold text-xl mb-3">Web</h3>
-                    <p>Laravel, PHP, MySQL, JavaScript</p>
-                </div>
-                <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow-md">
-                    <h3 class="font-bold text-xl mb-3">Mobile</h3>
-                    <p>Flutter</p>
-                </div>
-                <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow-md">
-                    <h3 class="font-bold text-xl mb-3">APIs</h3>
-                    <p>RESTful (Laravel)</p>
-                </div>
-                <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow-md">
-                    <h3 class="font-bold text-xl mb-3">Deployment</h3>
-                    <p>On-premise CBT, Docker, Shared Hosting</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Web Apps Section -->
-    <section id="web-apps" class="py-16 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="text-3xl font-extrabold text-center mb-10">Web Applications</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">          <!-- Project 1 - Kadirs Taxpayer Web App -->
-          <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg">
-            <img class="w-full h-48 object-cover" src="images/web/kadtax.png" alt="Kadirs Taxpayer Web App">
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">Kadirs Taxpayer Web App</h3>
-              <p class="mb-2">Built using FlutterFlow, the Kadirs Taxpayer web app streamlines tax-related services for residents of Kaduna State, Nigeria, offering tax registration, payment processing, and property registration for withholding tax on rent.</p>
-              <div class="mb-4">
-                <h4 class="font-semibold mb-1">My Contributions:</h4>
-                <ul class="list-disc pl-5 text-sm mb-2">
-                  <li>Implemented receipt generation functionality using custom Flutter code</li>
-                  <li>Ensured accurate and user-friendly transaction documentation</li>
-                  <li>Integrated custom Flutter code into the FlutterFlow project</li>
-                </ul>
-              </div>
-              <div class="mb-4">
-                <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">Flutter</span>
-                <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">FlutterFlow</span>
-                <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">Dart</span>
-              </div>
-              <div class="flex gap-3">
-                <a href="https://kadtaxonrent.com.ng/" target="_blank" class="inline-block bg-[#028cf8] hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md transition">Visit Site</a>
-              </div>
-            </div>
+    <div x-show="open" class="md:hidden">            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">                <a href="#home" @click="open = false" class="block hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Home</a>
+        <a href="#web-apps" @click="open = false" class="block hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Web Apps</a>
+        <a href="#mobile-apps" @click="open = false" class="block hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Mobile Apps</a>
+        <a href="#apis" @click="open = false" class="block hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">APIs</a>
+        <a href="#cbt" @click="open = false" class="block hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">CBT Deployments</a>
+        <a href="#contact" @click="open = false" class="block hover:bg-blue-100 dark:hover:bg-blue-900 px-3 py-2 rounded-md font-medium">Contact</a>
+        <button @click="darkMode = !darkMode; document.documentElement.classList.toggle('dark', darkMode)" class="mt-2 bg-blue-200 dark:bg-blue-700 p-2 rounded-full focus:outline-none">
+          <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+          <svg x-show="darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-20">
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="flex flex-col md:flex-row items-center justify-center md:space-x-12">
+        <div class="mb-10 md:mb-0">
+          <div class="rounded-full overflow-hidden w-48 h-48 mx-auto border-4 border-[#028cf8] dark:border-[#028cf8] shadow-xl">
+            <img src="images/profile-photo.jpg" alt="Abdulsalam Abdulrahman" class="w-full h-full object-cover">
           </div>
-          <!-- Project 2 - KEMAP -->
-          <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg">
-            <img class="w-full h-48 object-cover" src="images/web/map.png" alt="KEMAP - Kaduna Electric Meter Application Portal">
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">KEMAP – Kaduna Electric Meter Application Portal</h3>
-              <p class="mb-2">KEMAP is a comprehensive web application developed for Kaduna Electric to digitize and streamline the meter application process. It integrates customers, administrative staff, Meter Asset Providers (MAP), and metering teams into a unified workflow.</p>
-              <div class="mb-4">
-                <h4 class="font-semibold mb-1">My Contributions & Features:</h4>
-                <ul class="list-disc pl-5 text-sm mb-2">
-                  <li>Developed backend with Laravel, MySQL and styled the application using Bootstrap 5, leveraging the Argon Dashboard template for faster UI development, consistency, and mobile responsiveness.</li>
-                  <li>Integrated OCR for validating uploaded electricity bills and API connections for customer data verification</li>
-                  <li>Delivered role-based portals: customer applications, admin dashboards, MAP reviews, and metering inspections</li>
-                  <li>Built status tracking system, dynamic analytics, and region-specific access controls</li>
-                  <li>Ensured mobile responsiveness and user accessibility</li>
-                </ul>
-              </div>
-              <div class="mb-4">
-                <h4 class="font-semibold mb-1">Impact:</h4>
-                <ul class="list-disc pl-5 text-sm mb-2">
-                  <li>Cut down application processing time from weeks to days</li>
-                  <li>Improved transparency and customer satisfaction through real-time status updates</li>
-                  <li>Enabled data-driven decisions with performance dashboards and regional analytics</li>
-                </ul>
-              </div>
-                            <div class="mb-4">
-                <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">Laravel</span>
-                <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">MySQL</span>
-                <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">Bootstrap 5</span>
-              </div>
-              <div class="flex gap-3">
-                <a href="https://map.kadunaelectric.com/customer" target="_blank" class="inline-block bg-[#028cf8] hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md transition">Customer Portal</a>
-                <a href="https://map.kadunaelectric.com" target="_blank" class="inline-block bg-[#028cf8] hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md transition">Main Portal</a>
-              </div>
-            </div>
+        </div>
+        <div class="flex-1 text-left md:text-left">
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
+            <span class="block">Hello, I'm</span>
+            <span class="block text-[#028cf8] dark:text-[#028cf8]">Abdulsalam Abdulrahman</span>
+          </h1>
+          <p class="mt-6 text-xl sm:text-2xl md:text-3xl leading-relaxed">
+            Full Stack Developer specialized in Web, Mobile, API Development & CBT Deployment
+          </p>
+          <div class="mt-10 flex flex-wrap gap-5">
+            <a href="#web-apps" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#028cf8] hover:bg-blue-700 md:text-lg">
+              View My Work
+            </a>
+            <a href="#contact" class="px-8 py-3 border border-blue-300 dark:border-blue-700 text-base font-medium rounded-md bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900 md:text-lg text-[#028cf8] dark:text-[#028cf8]">
+              Contact Me
+            </a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Mobile Apps Section -->
-    <section id="mobile-apps" class="bg-blue-50 dark:bg-blue-900 py-16 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="text-3xl font-extrabold text-center mb-10">Mobile Applications</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Mobile App 1 -->
-          <div class="bg-white dark:bg-gray-900 overflow-hidden shadow-lg rounded-lg">
-            <img class="w-full h-48 object-cover" src="https://via.placeholder.com/600x400?text=Mobile+App+1" alt="Project Screenshot">
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">Student Quiz App</h3>
-              <p class="mb-2">A mobile application for students to take quizzes and practice for exams offline.</p>
-              <div class="mb-4">
-                <h4 class="font-semibold mb-1">My Contributions:</h4>
-                <ul class="list-disc pl-5 text-sm mb-2">
-                  <li>Designed quiz engine and offline data sync</li>
-                  <li>Built UI in Flutter and integrated SQLite</li>
-                  <li>Tested app on Android devices</li>
-                </ul>
-              </div>              <div class="mb-4">
-                <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">Flutter</span>
-                <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">SQLite</span>
-              </div>
-              <div class="flex gap-3">
-                <a href="#" target="_blank" class="inline-block bg-[#028cf8] hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md transition">See Live</a>
-              </div>
-            </div>
-          </div>
-          
+  <!-- Tech Stack -->
+  <section class="bg-blue-50 dark:bg-blue-900 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold text-center mb-10">My Tech Stack</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+        <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow-md">
+          <h3 class="font-bold text-xl mb-3">Web</h3>
+          <p>Laravel, PHP, MySQL, JavaScript</p>
+        </div>
+        <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow-md">
+          <h3 class="font-bold text-xl mb-3">Mobile</h3>
+          <p>Flutter</p>
+        </div>
+        <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow-md">
+          <h3 class="font-bold text-xl mb-3">APIs</h3>
+          <p>RESTful (Laravel)</p>
+        </div>
+        <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow-md">
+          <h3 class="font-bold text-xl mb-3">Deployment</h3>
+          <p>On-premise CBT, Docker, Shared Hosting</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- APIs Section -->
-    <section id="apis" class="py-16 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="text-3xl font-extrabold text-center mb-10">API & Backend Projects</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- API Project 1 - Bill Delivery Analytics API -->
-          <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg">
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">Bill Delivery Analytics API</h3>
-              <p class="text-sm italic mb-2">Role: Backend Developer | Stack: Laravel, MySQL, REST API</p>
-              <p class="mb-2">Developed a RESTful analytics API for Kaduna Electric Distribution Company to track and optimize bill delivery operations. The system delivers real-time insights into delivery performance across multiple dimensions—time, and staff—enabling data-driven decisions and operational improvements.</p>
-              <div class="mb-4">
-                <h4 class="font-semibold mb-1">Key Features:</h4>
-                <ul class="list-disc pl-5 text-sm mb-2">
+  <!-- Web Apps Section -->
+  <section id="web-apps" class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl font-extrabold text-center mb-10">Web Applications</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">          <!-- Project 1 - Kadirs Taxpayer Web App -->
+      <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg">
+      <img class="w-full h-48 object-cover" src="images/web/kadtax.png" alt="Kadirs Taxpayer Web App">
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2">Kadirs Taxpayer Web App</h3>
+        <p class="mb-2">Built using FlutterFlow, the Kadirs Taxpayer web app streamlines tax-related services for residents of Kaduna State, Nigeria, offering tax registration, payment processing, and property registration for withholding tax on rent.</p>
+        <div class="mb-4">
+        <h4 class="font-semibold mb-1">My Contributions:</h4>
+        <ul class="list-disc pl-5 text-sm mb-2">
+          <li>Implemented receipt generation functionality using custom Flutter code</li>
+          <li>Ensured accurate and user-friendly transaction documentation</li>
+          <li>Integrated custom Flutter code into the FlutterFlow project</li>
+        </ul>
+        </div>
+        <div class="mb-4">
+        <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">Flutter</span>
+        <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">FlutterFlow</span>
+        <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">Dart</span>
+        </div>
+        <div class="flex gap-3">
+        <a href="https://kadtaxonrent.com.ng/" target="_blank" class="inline-block bg-[#028cf8] hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md transition">Visit Site</a>
+        </div>
+      </div>
+      </div>
+      <!-- Project 2 - KEMAP -->
+      <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg">
+      <img class="w-full h-48 object-cover" src="images/web/map.png" alt="KEMAP - Kaduna Electric Meter Application Portal">
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2">KEMAP – Kaduna Electric Meter Application Portal</h3>
+        <p class="mb-2">KEMAP is a comprehensive web application developed for Kaduna Electric to digitize and streamline the meter application process. It integrates customers, administrative staff, Meter Asset Providers (MAP), and metering teams into a unified workflow.</p>
+        <div class="mb-4">
+        <h4 class="font-semibold mb-1">My Contributions & Features:</h4>
+        <ul class="list-disc pl-5 text-sm mb-2">
+          <li>Developed backend with Laravel, MySQL and styled the application using Bootstrap 5, leveraging the Argon Dashboard template for faster UI development, consistency, and mobile responsiveness.</li>
+          <li>Integrated OCR for validating uploaded electricity bills and API connections for customer data verification</li>
+          <li>Delivered role-based portals: customer applications, admin dashboards, MAP reviews, and metering inspections</li>
+          <li>Built status tracking system, dynamic analytics, and region-specific access controls</li>
+          <li>Ensured mobile responsiveness and user accessibility</li>
+        </ul>
+        </div>
+        <div class="mb-4">
+        <h4 class="font-semibold mb-1">Impact:</h4>
+        <ul class="list-disc pl-5 text-sm mb-2">
+          <li>Cut down application processing time from weeks to days</li>
+          <li>Improved transparency and customer satisfaction through real-time status updates</li>
+          <li>Enabled data-driven decisions with performance dashboards and regional analytics</li>
+        </ul>
+        </div>
+        <div class="mb-4">
+        <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">Laravel</span>
+        <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">MySQL</span>
+        <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">Bootstrap 5</span>
+        </div>
+        <div class="flex gap-3">
+        <a href="https://map.kadunaelectric.com/customer" target="_blank" class="inline-block bg-[#028cf8] hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md transition">Customer Portal</a>
+        <a href="https://map.kadunaelectric.com" target="_blank" class="inline-block bg-[#028cf8] hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md transition">Main Portal</a>
+        </div>
+      </div>
+      </div>
+      <!-- Project 3 - Smart Food Ordering System -->
+      <div class="bg-white dark:bg-gray-900 overflow-hidden shadow-lg rounded-lg">
+        <img class="w-full h-48 object-cover" src="images/web/foodie.png" alt="Smart Food Ordering System">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Smart Food Ordering System</h3>
+          <p class="mb-2">Built a smart food ordering system that allows customers to place orders via a Flutter-powered interface. The application integrates a clean user experience for food selection, transaction submission, and instant PDF receipt generation tailored for 80mm thermal printers. Supports printing via USB or web, and saves transaction details to a backend system for reprinting and tracking.</p>
+          <div class="mb-4">
+            <h4 class="font-semibold mb-1">Key Features:</h4>
+            <ul class="list-disc pl-5 text-sm mb-2">
+              <li>Dynamic food selection & total calculation</li>
+              <li>Order submission to PHP/MySQL backend</li>
+              <li>PDF receipt generation & USB/web printing</li>
+              <li>Stores transactions for reprinting</li>
+              <li>Simple session management on web</li>
+            </ul>
+          </div>
+          <div class="mb-4">
+            <h4 class="font-semibold mb-1">Highlights:</h4>
+            <ul class="list-disc pl-5 text-sm mb-2">
+              <li>Real-time printing after order</li>
+              <li>Clean UI, backend-linked</li>
+              <li>Modular: order, receipt & printing handled separately</li>
+            </ul>
+          </div>
+                    <div class="mb-4">
+            <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">Flutter</span>
+            <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">PHP</span>
+            <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">MySQL</span>
+            <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">PDF</span>
+            <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">Thermal Printer</span>
+          </div>
+          <div class="flex gap-3">
+            <a href="#" target="https://foodiecateringservices.com.ng/" class="inline-block bg-[#028cf8] hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md transition">See Live</a>
+            <a href="https://github.com/AbdulsalamAbdulrahman/foodie" target="_blank" class="inline-block bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-semibold px-5 py-2 rounded-md transition">View Source Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Mobile Apps Section -->
+  <section id="mobile-apps" class="bg-blue-50 dark:bg-blue-900 py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl font-extrabold text-center mb-10">Mobile Applications</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Mobile App 1 -->
+      <div class="bg-white dark:bg-gray-900 overflow-hidden shadow-lg rounded-lg">
+      <img class="w-full h-48 object-cover" src="https://via.placeholder.com/600x400?text=Mobile+App+1" alt="Project Screenshot">
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2">Student Quiz App</h3>
+        <p class="mb-2">A mobile application for students to take quizzes and practice for exams offline.</p>
+        <div class="mb-4">
+        <h4 class="font-semibold mb-1">My Contributions:</h4>
+        <ul class="list-disc pl-5 text-sm mb-2">
+          <li>Designed quiz engine and offline data sync</li>
+          <li>Built UI in Flutter and integrated SQLite</li>
+          <li>Tested app on Android devices</li>
+        </ul>
+        </div>              
+        <div class="mb-4">
+        <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">Flutter</span>
+        <span class="inline-block bg-blue-200 dark:bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">SQLite</span>
+        </div>
+        <div class="flex gap-3">
+        <a href="#" target="_blank" class="inline-block bg-[#028cf8] hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md transition">See Live</a>
+        </div>
+      </div>
+      </div>
+      
+    </div>
+    </div>
+  </section>
+
+  <!-- APIs Section -->
+  <section id="apis" class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl font-extrabold text-center mb-10">API & Backend Projects</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- API Project 1 - Bill Delivery Analytics API -->
+      <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg">
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2">Bill Delivery Analytics API</h3>
+        <p class="text-sm italic mb-2">Role: Backend Developer | Stack: Laravel, MySQL, REST API</p>
+        <p class="mb-2">Developed a RESTful analytics API for Kaduna Electric Distribution Company to track and optimize bill delivery operations. The system delivers real-time insights into delivery performance across multiple dimensions—time, and staff—enabling data-driven decisions and operational improvements.</p>
+        <div class="mb-4">
+        <h4 class="font-semibold mb-1">Key Features:</h4>
+        <ul class="list-disc pl-5 text-sm mb-2">
                   <li>Summary, Daily & Monthly Analytics: Tracks delivery rates, trends, and success/failure reasons.</li>
                   <li>Staff Performance: Identifies top and underperforming staff with delivery rate metrics.</li>
                   <li>Geographical Analysis: Maps delivery success by area office or feeder.</li>
@@ -781,42 +819,33 @@ Authorization: Bearer your-api-token
     </script>
     <script src="js/main.js"></script>
     <script>
-      // Swap only the navbar logo based on dark mode
-      document.addEventListener('DOMContentLoaded', function() {
-        function setNavLogo() {
-          const isDark = document.documentElement.classList.contains('dark');
-          // Navbar logo only
-          const navLogo = document.getElementById('nav-logo-img');
-          if (navLogo) {
-            navLogo.src = isDark ? 'images/A_logo_light.png' : 'images/A_logo_dark.png';
-          }
+      // Modal open/close functions
+      function openApiDocsModal() {
+        const modal = document.getElementById('api-docs-modal');
+        if (modal) {
+          modal.classList.remove('hidden');
+          // Render embedded markdown variable to modal
+          const html = (marked.parse ? marked.parse(apiDocMarkdown) : marked(apiDocMarkdown));
+          document.getElementById('modal-markdown-container').innerHTML = html;
         }
-        setNavLogo();
-        // Listen for dark mode changes
-        const observer = new MutationObserver(setNavLogo);
-        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });        // Define a global function to open the modal
-        <script>
-          function openApiDocsModal() {
-            const modal = document.getElementById('api-docs-modal');
-            if (modal) {
-              modal.classList.remove('hidden');
-              fetch('docs/api-docs.md')
-                .then(res => res.text())
-                .then(md => {
-                  document.getElementById('modal-markdown-container').innerHTML = marked.parse(md);
-                })
-                .catch(err => console.error('Error loading API documentation:', err));
-            }
-          }
-          function closeApiDocsModal() {
-            const modal = document.getElementById('api-docs-modal');
-            if (modal) modal.classList.add('hidden');
-          }
-        </script>
+      }
+      function closeApiDocsModal() {
+        const modal = document.getElementById('api-docs-modal');
+        if (modal) modal.classList.add('hidden');
+      }
+      // Close modal when clicking overlay
+      document.addEventListener('DOMContentLoaded', function() {
+        const overlay = document.getElementById('api-docs-modal');
+        if (overlay) {
+          overlay.addEventListener('click', function(e) {
+            if (e.target.id === 'api-docs-modal') closeApiDocsModal();
+          });
+        }
       });
-    </script>    <!-- API Documentation Modal -->
-    <div id="api-docs-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-      <div class="bg-white dark:bg-gray-900 rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col relative mx-auto mt-16 modal-dialog">
+    </script>
+    <!-- API Documentation Modal -->
+    <div id="api-docs-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+      <div class="bg-white dark:bg-gray-900 rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col mx-auto modal-dialog">
         <!-- Modal Header -->
         <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
           <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">API Documentation</h3>
@@ -828,7 +857,7 @@ Authorization: Bearer your-api-token
         </div>
         <!-- Modal Body -->
         <div class="overflow-y-auto p-6 flex-grow">
-          <div id="modal-markdown-container" class="prose dark:prose-dark w-full"></div>
+          <div id="modal-markdown-container" class="prose dark:prose-dark w-full mx-auto"></div>
         </div>
       </div>
     </div>
